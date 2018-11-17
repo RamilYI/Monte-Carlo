@@ -53,8 +53,8 @@ private void calcIntegral(){
     double faultMonteKarlo = Math.abs(exactSol - assesmentMonteKarlo);
     fault.appendText(String.format("%.3f", faultMonteKarlo));
     //вводим дисперсию в textfield
-    double buf = (integratedtwoFunc.calculate(a) - integratedtwoFunc.calculate(b));
-    double dispersMonteKarlo = buf *(a - b) - Math.pow(exactSol, 2);
+    double dispersMonteKarlo = (integratedtwoFunc.calculate(a) - integratedtwoFunc.calculate(b))
+            *(a - b) - Math.pow(exactSol, 2);
     dispersion.appendText(String.format("%.3f", dispersMonteKarlo));
     }
 

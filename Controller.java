@@ -21,22 +21,9 @@ public class Controller  {
 private double a, b, U, sum, x;
 private int iteration;
 
-private IntegralFunc integral = new IntegralFunc() {
-    @Override
-    public double integral(double x) {
-        return Math.pow(x, 4) + 2;
-    }
-
-    @Override
-    public double integratedFunc(double x){
-        return Math.pow(x, 5) / 5 + 2 * x;
-    }
-
-    @Override
-    public double integratedtwoFunc(double x){
-        return Math.pow(x, 6) / 30 + Math.pow(x, 2);
-    }
-};
+private IntegralFunc integral = (x) -> Math.pow(x, 4) + 2,
+                    integratedFunc = (x) -> Math.pow(x, 5) / 5 + 2 * x,
+                    integratedtwoFunc = (x) -> Math.pow(x, 6) / 30 + Math.pow(x, 2);
 
 
 @FXML
@@ -50,7 +37,7 @@ private void calcIntegral(){
     Random random = new Random();
 
      //точное значение
-    double exactSol = integral.integratedFunc(a) - integral.integratedFunc(b);
+    double exactSol = integratedFunc.calculate(a) - integratedFunc.calculate(b);
     solution.appendText(Double.toString(exactSol));
 
      //метод монте-карло
@@ -58,7 +45,7 @@ private void calcIntegral(){
             .forEach(index -> {
                 U = random.nextDouble();
                 x = b + (a - b) * U;
-                sum += integral.integral(x);
+                sum += integral.calculate(x);
             });
 
     //вводим оценку в textfield
@@ -68,7 +55,7 @@ private void calcIntegral(){
     double faultMonteKarlo = Math.abs(exactSol - assesmentMonteKarlo);
     fault.appendText(String.format("%.3f", faultMonteKarlo));
     //вводим дисперсию в textfield
-    double dispersMonteKarlo = (integral.integratedtwoFunc(a) - integral.integratedFunc(b))
+    double dispersMonteKarlo = (integratedtwoFunc.calculate(a) - integratedFunc.calculate(b))
             *(a - b) - Math.pow(assesmentMonteKarlo, 2);
     dispersion.appendText(String.format("%.3f", dispersMonteKarlo));
     }

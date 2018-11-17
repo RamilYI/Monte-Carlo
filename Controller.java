@@ -21,7 +21,7 @@ private int iteration;
 
 private IntegralFunc integral = (x) -> Math.pow(x, 4) + 2,
                      integratedFunc = (x) -> Math.pow(x, 5) / 5 + 2 * x,
-                     integratedtwoFunc = (x) -> Math.pow(x, 6) / 30 + Math.pow(x, 2);
+                     integratedtwoFunc = (x) -> Math.pow(x, 9) / 9 + Math.pow(x, 5) * 0.8 + 4 * x;
 
 
 @FXML

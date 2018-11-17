@@ -2,14 +2,12 @@ package sample;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextField;
 import java.util.Random;
 import java.util.stream.IntStream;
 
 public class Controller  {
-@FXML private Button calc;
 @FXML private TextField solution;
 @FXML private TextField assesment;
 @FXML private TextField fault;
@@ -22,8 +20,8 @@ private double a, b, U, sum, x;
 private int iteration;
 
 private IntegralFunc integral = (x) -> Math.pow(x, 4) + 2,
-                    integratedFunc = (x) -> Math.pow(x, 5) / 5 + 2 * x,
-                    integratedtwoFunc = (x) -> Math.pow(x, 6) / 30 + Math.pow(x, 2);
+                     integratedFunc = (x) -> Math.pow(x, 5) / 5 + 2 * x,
+                     integratedtwoFunc = (x) -> Math.pow(x, 6) / 30 + Math.pow(x, 2);
 
 
 @FXML
@@ -56,7 +54,7 @@ private void calcIntegral(){
     fault.appendText(String.format("%.3f", faultMonteKarlo));
     //вводим дисперсию в textfield
     double dispersMonteKarlo = (integratedtwoFunc.calculate(a) - integratedFunc.calculate(b))
-            *(a - b) - Math.pow(assesmentMonteKarlo, 2);
+            *(a - b) - Math.pow(exactSol, 2);
     dispersion.appendText(String.format("%.3f", dispersMonteKarlo));
     }
 

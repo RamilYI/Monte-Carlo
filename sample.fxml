@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="center" hgap="10" prefHeight="371.0" prefWidth="381.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+      <AnchorPane prefHeight="389.0" prefWidth="545.0">
+            <Button id="calc" fx:id="calc" layoutX="20.0" layoutY="174.0" mnemonicParsing="false" onAction="#calcIntegral" text="Вычислить">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="21.0" layoutY="50.0" text="Функция: x^4 + 2">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="192.0" layoutY="50.0" text="Верхний предел: ">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="193.0" layoutY="83.0" prefHeight="16.0" prefWidth="104.0" text="Нижний предел: ">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="16.0" layoutY="153.0" text="Число испытаний:">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </Label>
+            <Spinner id="numTest" fx:id="numTest" editable="true" layoutX="155.0" layoutY="149.0" max="100000000" min="10" prefHeight="25.0" prefWidth="149.0" />
+            <Label layoutX="16.0" layoutY="118.0" prefHeight="16.0" prefWidth="110.0" text="Точное решение: ">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </Label>
+            <TextField id="assesment" fx:id="assesment" editable="false" layoutX="89.0" layoutY="255.0" prefHeight="25.0" prefWidth="197.0" />
+            <Label layoutX="21.0" layoutY="259.0" text="Оценка:">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="22.0" text="Дано:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="221.0" text="Решение:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Spinner id="lowerLimit" fx:id="lowerLimit" editable="true" layoutX="296.0" layoutY="79.0" max="100" min="0" prefHeight="25.0" prefWidth="49.0" />
+            <Spinner id="upperLimit" fx:id="upperLimit" editable="true" layoutX="296.0" layoutY="46.0" max="100" min="0" prefHeight="25.0" prefWidth="49.0" />
+            <TextField id="solution" fx:id="solution" editable="false" layoutX="154.0" layoutY="114.0" prefHeight="25.0" prefWidth="149.0" />
+            <Label layoutX="20.0" layoutY="295.0" text="Абсолютная погрешность:">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font></Label>
+            <TextField id="fault" fx:id="fault" editable="false" layoutX="192.0" layoutY="291.0" prefHeight="25.0" prefWidth="96.0" />
+            <Label layoutX="20.0" layoutY="331.0" text="Дисперсия:">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font>
+            </Label>
+            <TextField id="dispersion" fx:id="dispersion" editable="false" layoutX="90.0" layoutY="327.0" prefHeight="25.0" prefWidth="197.0" />
+            <Button layoutX="304.0" layoutY="325.0" mnemonicParsing="false" onAction="#exit" text="Выход">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+      </AnchorPane>
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+</GridPane>

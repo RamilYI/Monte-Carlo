@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Интеграл с методом Монте-Карло");
-        primaryStage.setScene(new Scene(root, 381, 371));
+        primaryStage.setScene(new Scene(root, 381, 400));
         primaryStage.setResizable(false);
         primaryStage.show();
     }

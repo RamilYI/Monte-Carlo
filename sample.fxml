@@ -10,8 +10,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" prefHeight="371.0" prefWidth="381.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-      <AnchorPane prefHeight="503.0" prefWidth="381.0">
+<GridPane alignment="center" hgap="10" prefHeight="416.0" prefWidth="381.0" vgap="10" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+      <AnchorPane prefHeight="400.0" prefWidth="381.0">
             <Button id="calc" layoutX="20.0" layoutY="174.0" mnemonicParsing="false" onAction="#calcIntegral" text="Вычислить">
                <font>
                   <Font name="Times New Roman" size="14.0" />
@@ -54,7 +54,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="21.0" layoutY="221.0" text="Решение:">
+            <Label layoutX="20.0" layoutY="212.0" text="Решение:">
                <font>
                   <Font size="16.0" />
                </font>
@@ -73,11 +73,17 @@
                </font>
             </Label>
             <TextField id="dispersion" fx:id="dispersion" editable="false" layoutX="90.0" layoutY="327.0" prefHeight="25.0" prefWidth="197.0" />
-            <Button layoutX="304.0" layoutY="325.0" mnemonicParsing="false" onAction="#exit" text="Выход">
+            <Button layoutX="304.0" layoutY="365.0" mnemonicParsing="false" onAction="#exit" text="Выход">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
+      <Label layoutX="20.0" layoutY="371.0" text="Доверительный интервал:">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="DO" layoutX="179.0" layoutY="367.0" prefHeight="25.0" prefWidth="110.0" />
       </AnchorPane>
    <columnConstraints>
       <ColumnConstraints />

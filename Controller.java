@@ -11,6 +11,7 @@ public class Controller  {
 @FXML private TextField solution;
 @FXML private TextField assesment;
 @FXML private TextField fault;
+@FXML private TextField DO;
 @FXML private TextField dispersion;
 @FXML private Spinner<Integer> upperLimit;
 @FXML private Spinner<Integer> lowerLimit;
@@ -18,7 +19,7 @@ public class Controller  {
 
 private double a, b, U, sum, x;
 private int iteration;
-
+private final double z = 1.96;
 private IntegralFunc integral = (x) -> Math.pow(x, 4) + 2,
                      integratedFunc = (x) -> Math.pow(x, 5) / 5 + 2 * x,
                      integratedtwoFunc = (x) -> Math.pow(x, 9) / 9 + Math.pow(x, 5) * 0.8 + 4 * x;
@@ -72,6 +73,11 @@ private void calcIntegral(){
     double dispersMonteKarlo = (integratedtwoFunc.calculate(a) - integratedtwoFunc.calculate(b))
             *(a - b) - Math.pow(exactSol, 2);
     dispersion.appendText(String.format("%.3f", dispersMonteKarlo));
+    //доверительный интверал
+    double loyalinter1 = assesmentMonteKarlo + z* Math.sqrt(dispersMonteKarlo/iteration);
+    double loyalinter2 = assesmentMonteKarlo - z* Math.sqrt(dispersMonteKarlo/iteration);
+    String loyalinter = "(" + String.format("%.2f", loyalinter2) + "; " + String.format("%.2f", loyalinter1) + ")";
+    DO.appendText(loyalinter);
     }
 
     private void clearFields(){
@@ -79,6 +85,7 @@ private void calcIntegral(){
         assesment.clear();
         fault.clear();
         dispersion.clear();
+        DO.clear();
     }
 
     @FXML

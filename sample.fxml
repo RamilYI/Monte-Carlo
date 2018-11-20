@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 <GridPane alignment="center" hgap="10" prefHeight="371.0" prefWidth="381.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-      <AnchorPane prefHeight="389.0" prefWidth="545.0">
+      <AnchorPane prefHeight="503.0" prefWidth="381.0">
             <Button id="calc" layoutX="20.0" layoutY="174.0" mnemonicParsing="false" onAction="#calcIntegral" text="Вычислить">
                <font>
                   <Font name="Times New Roman" size="14.0" />

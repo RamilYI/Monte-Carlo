@@ -17,13 +17,12 @@ public class Controller  {
 @FXML private Spinner<Integer> lowerLimit;
 @FXML private Spinner<Integer> numTest;
 
-private double a, b, U, sum, x;
+private double a, b, U, sum, x, sumDispers1, sumDispers2;
 private int iteration;
+private double[] Xi;
 private final double z = 1.96;
-private IntegralFunc integral = (x) -> Math.pow(x, 4) + 2,
-                     integratedFunc = (x) -> Math.pow(x, 5) / 5 + 2 * x,
-                     integratedtwoFunc = (x) -> Math.pow(x, 9) / 9 + Math.pow(x, 5) * 0.8 + 4 * x;
-
+private IntegralFunc integral = (x) -> Math.pow(Math.E, -x),
+                     integratedFunc = (x) -> -Math.pow(Math.E, -x);
 
 @FXML
 private void calcIntegral(){
@@ -33,6 +32,7 @@ private void calcIntegral(){
     b = lowerLimit.getValue();
     iteration = numTest.getValue();
     sum = 0.0;
+    Xi = new double[iteration];
     Random random = new Random();
 
      //точное значение
@@ -44,6 +44,7 @@ private void calcIntegral(){
             .forEach(index -> {
                 U = random.nextDouble();
                 x = b + (a - b) * U;
+                Xi[index] = x;
                 sum += integral.calculate(x);
             });
 
@@ -70,14 +71,23 @@ private void calcIntegral(){
     double faultMonteKarlo = Math.abs(exactSol - assesmentMonteKarlo);
     fault.appendText(String.format("%.3f", faultMonteKarlo));
     //вводим дисперсию в textfield
-    double dispersMonteKarlo = (integratedtwoFunc.calculate(a) - integratedtwoFunc.calculate(b))
-            *(a - b) - Math.pow(exactSol, 2);
+    double dispersMonteKarlo = calcDispers();
     dispersion.appendText(String.format("%.3f", dispersMonteKarlo));
     //доверительный интверал
     double loyalinter1 = assesmentMonteKarlo + z* Math.sqrt(dispersMonteKarlo/iteration);
     double loyalinter2 = assesmentMonteKarlo - z* Math.sqrt(dispersMonteKarlo/iteration);
     String loyalinter = "(" + String.format("%.2f", loyalinter2) + "; " + String.format("%.2f", loyalinter1) + ")";
     DO.appendText(loyalinter);
+    }
+
+    private double calcDispers(){
+        sumDispers1 = 0.0;
+        sumDispers2 = 0.0;
+        IntStream.range(0, iteration)
+                .forEach(index -> sumDispers1 += Math.pow(integral.calculate(Xi[index]),2)/iteration);
+        IntStream.range(0, iteration)
+                .forEach(index -> sumDispers2 += integral.calculate(Xi[index])/iteration);
+        return sumDispers1 - Math.pow(sumDispers2, 2);
     }
 
     private void clearFields(){

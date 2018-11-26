@@ -84,9 +84,10 @@ private void calcIntegral(){
         sumDispers1 = 0.0;
         sumDispers2 = 0.0;
         IntStream.range(0, iteration)
-                .forEach(index -> sumDispers1 += Math.pow(integral.calculate(Xi[index]),2)/iteration);
-        IntStream.range(0, iteration)
-                .forEach(index -> sumDispers2 += integral.calculate(Xi[index])/iteration);
+                .forEach(index -> {
+                    sumDispers1 += Math.pow(integral.calculate(Xi[index]),2)/iteration;
+                    sumDispers2 += integral.calculate(Xi[index])/iteration;
+                });
         return sumDispers1 - Math.pow(sumDispers2, 2);
     }
 
